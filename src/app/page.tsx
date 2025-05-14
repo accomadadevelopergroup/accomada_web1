@@ -1,3 +1,6 @@
+import Image from "next/image";
+import brandImage from "@/public/Brand Image.png";
+
 export default function Home() {
   const flats = [
     {
@@ -21,29 +24,57 @@ export default function Home() {
   ];
 
   return (
-    <main className="flex flex-col gap-6 p-6 max-w-4xl mx-auto">
-      <h1 className="text-3xl font-bold text-center mb-8">Our Stays</h1>
-      {flats.map(flat => (
-        <div
-          key={flat.id}
-          className="border border-gray-200 rounded-xl p-6 shadow-sm bg-white"
-        >
-          <h2 className="text-xl font-semibold mb-2">{flat.title}</h2>
-          <p className="text-gray-600 whitespace-pre-line mb-3">{flat.description}</p>
-          <ul className="text-sm text-gray-500 mb-4">
-            <li>🛏 Beds: {flat.bed}</li>
-            <li>👥 Pax: {flat.pax}</li>
-            <li>🔑 {flat.checkin}</li>
-          </ul>
-          <a
-            href={flat.whatsapp}
-            target="_blank"
-            className="inline-block bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700"
-          >
-            Enquire on WhatsApp
-          </a>
+    <main className="flex flex-col gap-10 p-6 max-w-5xl mx-auto">
+      <section className="flex flex-col md:flex-row gap-6 items-center">
+        <div className="w-full md:w-1/2">
+          <Image
+            src={brandImage}
+            alt="Accomada Brand Sign"
+            className="rounded-xl w-full h-auto object-contain"
+            priority
+          />
         </div>
-      ))}
+        <div className="w-full md:w-1/2 text-gray-700 text-sm leading-relaxed">
+          <h1 className="text-2xl font-bold mb-2">📌 Brand Purpose</h1>
+          <p className="mb-4">
+            Accomada is a tech-first short-term rental brand offering fully-furnished,
+            work-from-stay-ready homes across India. We sit at the intersection of hospitality,
+            accommodation services, and travel tech—bringing together consistent guest experience,
+            flexible living, and operational efficiency through technology.
+          </p>
+          <h2 className="text-xl font-semibold mb-2">🧭 Brand Values</h2>
+          <ul className="list-disc list-inside space-y-2">
+            <li><strong>Comfort with Consistency</strong> – Every Accomada stay feels like home, but better.</li>
+            <li><strong>Transparency & Trust</strong> – No hidden terms, no unkept promises. What you see is what you get.</li>
+            <li><strong>Efficiency through Tech</strong> – Tech-enabled operations that streamline bookings, communication, and property management.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <h1 className="text-3xl font-bold text-center mb-8">Our Stays</h1>
+        {flats.map(flat => (
+          <div
+            key={flat.id}
+            className="border border-gray-200 rounded-xl p-6 shadow-sm bg-white mb-6"
+          >
+            <h2 className="text-xl font-semibold mb-2">{flat.title}</h2>
+            <p className="text-gray-600 whitespace-pre-line mb-3">{flat.description}</p>
+            <ul className="text-sm text-gray-500 mb-4">
+              <li>🛏 Beds: {flat.bed}</li>
+              <li>👥 Pax: {flat.pax}</li>
+              <li>🔑 {flat.checkin}</li>
+            </ul>
+            <a
+              href={flat.whatsapp}
+              target="_blank"
+              className="inline-block bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700"
+            >
+              Enquire on WhatsApp
+            </a>
+          </div>
+        ))}
+      </section>
     </main>
   );
 }
