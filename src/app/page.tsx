@@ -7,7 +7,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 export default function Home() {
-  const [activeFlat, setActiveFlat] = useState(null);
+  const [activeFlat, setActiveFlat] = useState<typeof flats[0] | null>(null);
+
 
   const flats = [
     {
